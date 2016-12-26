@@ -5,11 +5,16 @@ block content
 
         p
             label(for='nome') Nome:
-            input(name="nome")
+            if user
+                input(name="nome", value=user.nome)
+            else
+                input(name="nome")
 
         p
             label(for='idade') Idade:
-            input(name='idade', type='number')
-
+            if user
+                input(name='idade', type='number', value=user.idade)
+            else
+                input(name='idade', type='number')
         p
             button(type='submit') Vai

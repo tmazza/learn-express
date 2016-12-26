@@ -9,3 +9,5 @@ block content
         each u in users
             li= u.nome + ' - ' + u.idade + ' '
                 a(href='/users/delete/id/' + u._id) delete
+                span  
+                a(href='/users/update/id/' + u._id) update
