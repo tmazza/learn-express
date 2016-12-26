@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1= title
+
+  form(method="post")
+    p
+      label(for="user[name]") Username:
+        input(type="text",name="user[name]")
+    p
+      label(for="user[password]") Password:
+        input(type="password",name="user[password]")
+
+    p.buttons
+      input(type="submit",value="Entrar")
