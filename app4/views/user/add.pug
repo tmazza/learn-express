@@ -1,0 +1,15 @@
+extends ../layout
+
+block content
+    form(method='post')
+
+        p
+            label(for='nome') Nome:
+            input(name="nome")
+
+        p
+            label(for='idade') Idade:
+            input(name='idade', type='number')
+
+        p
+            button(type='submit') Vai
