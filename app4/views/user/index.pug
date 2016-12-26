@@ -3,8 +3,9 @@ extends ../layout
 block content
     <h1>Users</h1>
 
-    a(href='./users/add') add
+    a(href='/users/add') add
 
     ul
         each u in users
-            li= u.nome + ' - ' + u.idade
+            li= u.nome + ' - ' + u.idade + ' '
+                a(href='/users/delete/id/' + u._id) delete
