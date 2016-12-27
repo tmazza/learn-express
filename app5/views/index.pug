@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+
+  if logado
+    h1 Yes! \o/
+    a(href='/logout') Sair
+  else 
+    h1 Identifique-se :(
+    a(href='/login') Entrar
+
+
+  br
+  br
+
+  a(href='/area-restrita') Área restrita

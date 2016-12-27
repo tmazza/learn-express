@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  h1 Login
+
+  if msg != null
+    h2= msg
+
+  form(method='post')
+
+    p
+    label(for='usernname') Username
+        input(name='username')
+
+    p
+    label(for='pwd') Password
+        input(name='pwd', type='password')
+
+    br
+    br
+
+    button(type='submit') adas
+
+
+
+
+
