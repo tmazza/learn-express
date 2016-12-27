@@ -10,7 +10,6 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 
 var db = require('./db');
-var hash = require('./auth').hash;
 
 var app = express();
 

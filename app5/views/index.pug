@@ -4,8 +4,8 @@ block content
   h1= title
   p Welcome to #{title}
 
-  if logado
-    h1 Yes! \o/
+  if user != null
+    h1= '\\o/ Olá ' + user.nome
     a(href='/logout') Sair
   else 
     h1 Identifique-se :(
