@@ -1,0 +1,41 @@
+<% include head %>
+<div id="wrapper">
+
+    <!-- Header -->
+    <header id="header" class="alt">
+        <span class="logo"><img src="images/logo.svg" alt="" /></span>
+        <a href='/'>Voltar</a>
+    </header>
+
+    <div  style="text-align:center;">
+        <% if(msg != null) { %> <h1> <%= msg %> </h1> <% } %>
+         
+
+
+        <form method="post">
+          <p>
+            <label for="username">
+              <input type="text" name="username" id='username' placeholder="username" style="max-width: 400px;margin:0 auto;" />
+            </label>
+          </p>
+          <p>
+            <label for="password">
+              <input type="password" name="pwd" id='password' placeholder="password" style="max-width: 400px;margin:0 auto;" />
+            </label>
+          </p>
+
+          <button type="submit">
+            Entrar
+          </button>
+
+          <br><br><br>
+          <h4 style="text-align:left">
+            Hint:<br>
+            username: admin<br>
+            password: admin<br>
+          </h4>
+
+        </form>
+    </div>
+</div>
+<% include footer %>
