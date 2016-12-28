@@ -6,11 +6,37 @@ function laodMarks(map) {
       method: 'get',
       url: '/sensors/',
     }).done(function(data) {
+
+      var images = {
+        "g1-b1": {url: '/images/markers/g1-b1.png',}, // 67-100
+        "g1-b2": {url: '/images/markers/g1-b2.png',}, // 34-66
+        "g1-b3": {url: '/images/markers/g1-b3.png',}, // 0-33
+        "g2-b1": {url: '/images/markers/g2-b1.png',}, // 67-100
+        "g2-b2": {url: '/images/markers/g2-b2.png',}, // 34-66
+        "g2-b3": {url: '/images/markers/g2-b3.png',}, // 0-33
+        "g3-b1": {url: '/images/markers/g3-b1.png',}, // 0-33
+        "g3-b2": {url: '/images/markers/g3-b2.png',}, // 0-33
+        "g3-b3": {url: '/images/markers/g3-b3.png',}, // 0-33
+      };
+
+
       var markers = data.map(function(sensor, i){
-        return new google.maps.Marker({
+        imgg = 'g1';
+        if(sensor['gas'] < 67) imgg = 'g2';
+        if(sensor['gas'] < 34) imgg = 'g3';
+        imgb = 'b1';
+        if(sensor['batery'] < 67) imgb = 'b2';
+        if(sensor['batery'] < 34) imgb = 'b3';
+
+        marker = new google.maps.Marker({
           position: {lat: parseFloat(sensor['lat']),lng: parseFloat(sensor['lng']) },
-          map: map
+          map: map,
+          icon: images[imgg+'-'+imgb],
         });
+        marker.addListener('click', function() {
+          showSensor(sensor);
+        });
+        return marker;
       });
 
       var markerCluster = new MarkerClusterer(map, markers,
@@ -20,6 +46,10 @@ function laodMarks(map) {
     }).fail(function() {
       console.log('fail...');
     });
+}
+
+function showSensor(sensor) {
+  console.log(sensor);
 }
 </script>
 
