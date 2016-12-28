@@ -66,5 +66,4 @@ function authenticate(name, pass, fn) {
   });
 }
 
-
 module.exports = router;
