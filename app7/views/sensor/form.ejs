@@ -1,4 +1,36 @@
 <% include ../head %>
+
+<script>
+
+  function findGeo(){
+    var url = 'https://maps.googleapis.com/maps/api/geocode/json';
+    var search = $('#search-term').val();
+    
+    $.ajax({
+      url: url,  
+      data: {
+        address: search,
+        key: 'AIzaSyBEEUG7_kkWgi8BKTluspPI86uttv8pHTE',
+      }    
+    }).done(function(data) {
+      console.log(data);
+      if(data['status'] == "OK") {
+        $.each(data['results'], function(k, v){
+          $('#name').val(v['formatted_address']);
+          $('#lat').val(v['geometry']['location']['lat']);
+          $('#lng').val(v['geometry']['location']['lng']);
+        });
+      } else {
+        alert('Nenhum resultado encontrado.');
+      }
+    }).fail(function(data) {
+      console.log('ok');
+    });
+
+  }
+
+</script>
+
 <div id="wrapper">
 
     <!-- Header -->
@@ -8,6 +40,12 @@
     </header>
 
     <div  style="text-align:center;">
+
+        <p>
+           <input type="text" name="name" id='search-term' placeholder="Endereço" style="max-width: 400px;margin:0 auto;" />
+           <button type="button" id='search' onclick="findGeo()">Buscar geolocalização</button>
+          
+        </p>
 
         <form method="post">
           <p>
@@ -47,5 +85,14 @@
 
         </form>
     </div>
+
+    <br>  
+    <br>  
+    <br>  
+    <br>  
+      <p>design by <a href="https://twitter.com/ajlkn">@ajlkn</a> for <a href="https://html5up.net">HTML5 UP</a>.</p> Development by <a href="https://github.com/tmazza">tmazza</a>
 </div>
+
+
+
 <% include ../footer %>
