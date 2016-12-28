@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 
-var db = require('../components/db');
 var hash = require('../components/auth').hash;
 
 /* GET home page. */
@@ -66,16 +65,6 @@ function authenticate(name, pass, fn) {
     fn(new Error('Usuário ou senha incorreta.'));
   });
 }
-
-function restrict(req, res, next) {
-  if (req.session.user) {
-    next();
-  } else {
-    req.session.error = 'Identifique-se!';
-    res.redirect('/login');
-  }
-}
-
 
 
 module.exports = router;

@@ -1,0 +1,36 @@
+<% include ../head %>
+<div id="wrapper">
+
+    <!-- Header -->
+    <header id="header" class="alt">
+        <span class="logo"><img src="/images/logo.svg" alt="" /></span>
+        <a href='/'>Cancelar</a>
+    </header>
+
+    <div  style="text-align:center;">
+
+        <form method="post">
+          <p>
+            <label for="name">
+              <input type="text" name="name" id='name' placeholder="name" style="max-width: 400px;margin:0 auto;" />
+            </label>
+          </p>
+          <p>
+            <label for="lat">
+              <input type="text" name="lat" id='lat' placeholder="lat" style="max-width: 400px;margin:0 auto;" />
+            </label>
+          </p>
+          <p>
+            <label for="lng">
+              <input type="text" name="lng" id='lng' placeholder="lng" style="max-width: 400px;margin:0 auto;" />
+            </label>
+          </p>
+
+          <button type="submit">
+            Cadastrar
+          </button>
+
+        </form>
+    </div>
+</div>
+<% include ../footer %>

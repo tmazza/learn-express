@@ -9,11 +9,22 @@ var session = require('express-session');
 var index = require('./routes/index');
 var sensors = require('./routes/sensors');
 
+var db = require('./components/db');
+
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
+
+// Connect to Mongo on start
+db.connect('mongodb://localhost:27017/app7', function(err) {
+  if (err) {
+    console.log('Unable to connect to Mongo.')
+    process.exit(1)
+  }
+});
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -26,8 +37,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
   resave: false,
   saveUninitialized: false,
-  secret: 'shhhh, very secret'
+  secret: 'secret \\o/'
 }));
+
 
 app.use('/', index);
 app.use('/sensors', sensors);
